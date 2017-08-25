@@ -1,0 +1,91 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Uhual Coding Test</title>
+  <meta name="description" content="Poujlivaia Uhual Coding Test">
+  <meta name="author" content="Alexandra Poujlivaia">
+
+  <!-- Bootstrap, because in 4 hours, there's no reason to reinvent the wheel in terms of style and responsiveness. -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!--Templating -->
+  <script id="hiddenUserTemplate" type="text/x-jQuery-tmpl">
+    <div class="col-md-4 user" onclick="togglePostsDisplay({{:id}}, this)">
+      <div class="name">{{:name}}
+        <span class="username">({{:username}})</span>
+      </div>
+      <span class="address">{{:address.suite}} {{:address.street}}<br>
+      {{:address.city}} {{:address.zip}}
+      </span>
+    </div>
+  </script>
+  <!--Templating -->
+  <script id="selectedUserTemplate" type="text/x-jQuery-tmpl">
+  <div class="row text-center">
+    <div class="col-md-12 selectedUser">
+      <div class="newPost" style="display: none">
+        <input class="title" type="text" placeholder="Post Title"/><br />
+        <textarea placeholder="Type your post here"></textarea>
+        <span class="btn" onclick="postNewPost(this, {{:userId}})">Save</span>
+      </div>
+      </div>
+        <span class="btn" onclick="toggleNewPost()">Create New Post</span>
+        <span class="btn" onclick="alphabetize('normal')">A - Z</span>
+        <span class="btn" onclick="alphabetize('reverse')">Z - A</span></div>
+    </div>
+
+    </div>
+  </script>
+  <!--Templating -->
+  <script id="hiddenPostsTemplate" type="text/x-jQuery-tmpl">
+  <div class="col-md-4 post">
+  <div class="row">
+  <div class="col-md-12">
+    <h3>{{:title}}</h3>
+    <div class="postBody" data-postId="{{:id}}">{{:body}}</div>
+    <textarea style="display: none;">{{:body}}</textarea>
+    </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <span class="btn" onclick="editPostText(this, {{:id}})">Edit</span>
+        <span class="btn delete" onclick="deletePostByPostId({{:id}})">Delete</span>
+      </div>
+    </div>
+  </div>
+  </script>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <section id="users">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Users</h1>
+          <p class="lead">Select a user below to see their posts.</p>
+        </div>
+      </div>
+      <div class="row">
+      <div class="userList col-md-12">
+
+      </div>
+    </div>
+    </section>
+    <section id="selectedUser">
+
+    </section>
+    <section id="selectedUserPosts">
+
+    </section>
+    </div>
+    <!-- Slight overreliance on heavy frameworks, but I'm faster with jquery at my disposal. -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jsrender/0.9.87/jsrender.js"></script>
+  <script src="scripts/main.js"></script>
+</body>
+</html>
